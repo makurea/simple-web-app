@@ -21,26 +21,27 @@ pipeline {
         }
 
         stage('Deploy to GitHub Pages') {
-    steps {
-        script {
-            echo 'Preparing to push updated static content...'
+            steps {
+                script {
+                    echo 'Preparing to push updated static content...'
 
-            withCredentials([string(credentialsId: env.GITHUB_CREDENTIAL_ID, variable: 'TOKEN')]) {
-                // Использование 'bat' вместо 'sh'
-                bat 'git config user.email "jenkins-ci@makurea.com"'
-                bat 'git config user.name "Jenkins CI Makurea"'
+                    withCredentials([string(credentialsId: env.GITHUB_CREDENTIAL_ID, variable: 'TOKEN')]) {
+                        // Использование 'bat' для Windows
+                        bat 'git config user.email "jenkins-ci@makurea.com"'
+                        bat 'git config user.name "Jenkins CI Makurea"'
 
-                // Обратите внимание: двойные кавычки внутри bat
-                bat "git commit --allow-empty -m \"Jenkins Pages Deploy - Build #${env.BUILD_NUMBER}\""
+                        // Обратите внимание: двойные кавычки внутри bat
+                        bat "git commit --allow-empty -m \"Jenkins Pages Deploy - Build #${env.BUILD_NUMBER}\""
 
-                // push
-                bat "git push https://${TOKEN}@github.com/makurea/simple-web-app.git HEAD:${env.TARGET_BRANCH}"
+                        // push
+                        bat "git push https://${TOKEN}@github.com/makurea/simple-web-app.git HEAD:${env.TARGET_BRANCH}"
+                    }
+                }
             }
         }
-    }
-}
+    } // <--- Закрывает секцию stages
 
-    post {
+    post { // <--- Находится на том же уровне, что и stages
         success {
             echo "SUCCESS: The web app should now be available at https://makurea.github.io/simple-web-app/"
         }
@@ -48,5 +49,4 @@ pipeline {
             echo 'FAILURE: Deployment failed. Check the logs.'
         }
     }
- }
-}
+} // <--- Закрывает секцию pipeline
