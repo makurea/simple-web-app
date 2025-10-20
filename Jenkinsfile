@@ -21,31 +21,24 @@ pipeline {
         }
 
         stage('Deploy to GitHub Pages') {
-            steps {
-                script {
-                    echo 'Preparing to push updated static content...'
+    steps {
+        script {
+            echo 'Preparing to push updated static content...'
 
-                    // Используем наш токен из Jenkins Credentials для аутентификации push
-                    withCredentials([string(credentialsId: env.GITHUB_CREDENTIAL_ID, variable: 'TOKEN')]) {
-                        // 1. Настройка Git для push
-                        sh 'git config user.email "jenkins-ci@makurea.com"'
-                        sh 'git config user.name "Jenkins CI Makurea"'
+            withCredentials([string(credentialsId: env.GITHUB_CREDENTIAL_ID, variable: 'TOKEN')]) {
+                // Использование 'bat' вместо 'sh'
+                bat 'git config user.email "jenkins-ci@makurea.com"'
+                bat 'git config user.name "Jenkins CI Makurea"'
 
-                        // 2. Создаем "пустой" коммит. Это гарантирует, что
-                        // Git увидит, что ветка "изменилась" и push сработает,
-                        // даже если файлы не менялись. Это триггер для GitHub Pages.
-                        sh "git commit --allow-empty -m 'Jenkins Pages Deploy - Build #${env.BUILD_NUMBER}'"
+                // Обратите внимание: двойные кавычки внутри bat
+                bat "git commit --allow-empty -m \"Jenkins Pages Deploy - Build #${env.BUILD_NUMBER}\""
 
-                        // 3. Выполняем push с использованием токена
-                        // Формат: https://ТОКЕН@github.com/ВАШ_РЕПО.git
-                        sh "git push https://${TOKEN}@github.com/makurea/simple-web-app.git HEAD:${env.TARGET_BRANCH}"
-
-                        echo 'Deployment push successful!'
-                    }
-                }
+                // push
+                bat "git push https://${TOKEN}@github.com/makurea/simple-web-app.git HEAD:${env.TARGET_BRANCH}"
             }
         }
     }
+}
 
     post {
         success {
@@ -55,4 +48,5 @@ pipeline {
             echo 'FAILURE: Deployment failed. Check the logs.'
         }
     }
+ }
 }
