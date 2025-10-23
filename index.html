@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Авторизация</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Авторизация | Проект X</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="login-container">
-    <h2>Вход в систему</h2>
-    <form id="loginForm">
-      <div class="input-group">
-        <label for="username">Логин</label>
-        <input type="text" id="username" required />
-      </div>
-      <div class="input-group">
-        <label for="password">Пароль</label>
-        <input type="password" id="password" required />
-      </div>
-      <button type="submit">Войти</button>
-      <p id="error-message"></p>
-    </form>
-  </div>
+    <main class="auth-wrapper">
+        <div class="card login-container">
+            <h1 class="card-title">
+                <i class="fas fa-lock"></i> Вход в систему
+            </h1>
+            <form id="loginForm" class="login-form">
 
-  <script src="script.js"></script>
+                <div class="input-field">
+                    <i class="fas fa-user icon"></i>
+                    <input type="text" id="username" placeholder="Имя пользователя" required autocomplete="username" />
+                </div>
+
+                <div class="input-field">
+                    <i class="fas fa-key icon"></i>
+                    <input type="password" id="password" placeholder="Пароль" required autocomplete="current-password" />
+                </div>
+
+                <p id="error-message" class="error-text" aria-live="polite"></p>
+
+                <button type="submit" id="loginButton" class="submit-button">
+                    <i class="fas fa-sign-in-alt"></i> Войти
+                </button>
+
+                <div class="meta-links">
+                    <a href="#" class="link">Забыли пароль?</a>
+                    <a href="#" class="link">Создать аккаунт</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,20 +1,56 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Привет, Batman!</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Джекпот-Автомат | Секретный доступ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <script>
-    if (localStorage.getItem("isLoggedIn") !== "true") {
-      window.location.href = "index.html";
-    }
-  </script>
-  <div class="hello-container">
-    <h1>Добро пожаловать, Batman!</h1>
-    <img src="https://i.gifer.com/7VE.gif" alt="Anime gif" class="anime-gif" />
-  </div>
+    <script>
+        // Проверка аутентификации остается на месте!
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "index.html";
+        }
+    </script>
+
+    <main class="auth-wrapper">
+        <div class="card game-container">
+            <h1 class="card-title">
+                <i class="fas fa-crown"></i> Секретный Слот (Batman Edition)
+            </h1>
+
+            <div class="slot-machine">
+                <div class="slot-reel" id="reel1"><span class="reel-symbol">?</span></div>
+                <div class="slot-reel" id="reel2"><span class="reel-symbol">?</span></div>
+                <div class="slot-reel" id="reel3"><span class="reel-symbol">?</span></div>
+            </div>
+
+            <p id="game-status" class="game-status">Нажмите "Крутить" для старта!</p>
+
+            <button id="spinButton" class="submit-button spin-button">
+                <i class="fas fa-sync-alt"></i> Крутить!
+            </button>
+
+            <button id="logoutButton" class="submit-button logout-button">
+                <i class="fas fa-sign-out-alt"></i> Выйти
+            </button>
+
+        </div>
+    </main>
+
+    <div id="jackpotModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div class="jackpot-stars">🌟🌟🌟</div>
+            <h2>СУПЕР ДЖЕКПОТ!</h2>
+            <p>Ты настоящий герой, Бэтмен!</p>
+            <div class="jackpot-stars">🌟🌟🌟</div>
+        </div>
+    </div>
+
+    <script src="slot.js"></script>
 </body>
 </html>
