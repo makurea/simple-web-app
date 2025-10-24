@@ -4,7 +4,7 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box; /* 👈 ИСПРАВЛЕНИЕ: Включение padding и border в общую ширину */
+    box-sizing: border-box; /* Включение padding и border в общую ширину */
 }
 
 /* 1. Переменные CSS для легкой настройки */
@@ -58,8 +58,8 @@ body {
 .card {
     background: var(--bg-card);
     border-radius: 20px;
-    /* padding: 40px; теперь включает в себя ширину! */
-    padding: 40px;
+    /* 🛠️ ИСПРАВЛЕНО: Уменьшен горизонтальный padding с 40px до 25px. */
+    padding: 40px 25px;
     /* Стиль Стекломорфизма */
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -79,7 +79,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* width: 100%; - не требуется, т.к. это блочный элемент по умолчанию */
 }
 
 .card-title .fas {
@@ -94,7 +93,7 @@ body {
 .input-field {
     position: relative;
     margin-bottom: 25px;
-    width: 100%; /* Убеждаемся, что занимает всю доступную ширину */
+    width: 100%; /* Занимает всю доступную ширину внутри (400px - 50px) */
 }
 
 .input-field .icon {
@@ -108,7 +107,7 @@ body {
 }
 
 .input-field input {
-    width: 100%; /* Теперь 100% включает padding и border благодаря box-sizing: border-box */
+    width: 100%; /* 100% теперь включает padding и border */
     padding: 12px 12px 12px 45px;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2);
