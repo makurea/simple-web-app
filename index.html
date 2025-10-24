@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Авторизация | Проект X</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css" />
 </head>
@@ -17,19 +17,21 @@
             <form id="loginForm" class="login-form">
 
                 <div class="input-field">
-                    <i class="fas fa-user icon"></i>
+                    <label for="username" class="visually-hidden">Имя пользователя</label>
+                    <i class="fas fa-user icon" aria-hidden="true"></i>
                     <input type="text" id="username" placeholder="Имя пользователя" required autocomplete="username" />
                 </div>
 
                 <div class="input-field">
-                    <i class="fas fa-key icon"></i>
+                    <label for="password" class="visually-hidden">Пароль</label>
+                    <i class="fas fa-key icon" aria-hidden="true"></i>
                     <input type="password" id="password" placeholder="Пароль" required autocomplete="current-password" />
                 </div>
 
-                <p id="error-message" class="error-text" aria-live="polite"></p>
+                <p id="error-message" class="error-text" aria-live="assertive"></p>
 
                 <button type="submit" id="loginButton" class="submit-button">
-                    <i class="fas fa-sign-in-alt"></i> Войти
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i> Войти
                 </button>
 
                 <div class="meta-links">
@@ -40,6 +42,5 @@
         </div>
     </main>
 
-    <script src="script.js"></script>
-</body>
+    <script src="script.js" defer></script> </body>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Секретная Аниме | Проект X</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <script>
+        // Проверка аутентификации
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "index.html";
+        }
+    </script>
+
+    <main class="auth-wrapper anime-wrapper">
+        <div class="card">
+            <h1 class="card-title">
+                <i class="fas fa-heart"></i> Твой Секретный Аниме-Пост
+            </h1>
+
+            <div class="anime-gif-container">
+                <img src="URL_TO_YOUR_ANIME_GIF.gif" alt="Секретная Аниме Гифка" class="anime-gif">
+            </div>
+
+            <button id="logoutButton" class="submit-button logout-button">
+                <i class="fas fa-sign-out-alt"></i> Выйти
+            </button>
+        </div>
+    </main>
+
+    <script>
+        // Логика выхода
+        const logoutButton = document.getElementById("logoutButton");
+        logoutButton.addEventListener('click', () => {
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
