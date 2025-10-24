@@ -55,27 +55,22 @@ body {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* 🛠️ Добавлено: Убеждаемся, что контент в карточке занимает всю ширину */
     text-align: center;
+    width: 100%; /* Гарантирует, что .card займет всю max-width от .auth-wrapper */
     transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
 }
 
 .card-title {
     font-weight: 600;
     margin-bottom: 30px;
     color: white;
+    /* 🛠️ Добавлено: Использование flexbox для выравнивания */
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.card-title .fas {
-    margin-right: 10px;
-    font-size: 1.2em;
-    color: var(--primary-color);
+    /* Убедимся, что заголовок занимает доступную ширину */
+    width: 100%;
 }
 
 /* ---------------------------------- */
@@ -84,6 +79,7 @@ body {
 .input-field {
     position: relative;
     margin-bottom: 25px;
+    width: 100%;
 }
 
 .input-field .icon {
