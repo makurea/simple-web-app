@@ -1,227 +1,128 @@
-/* ---------------------------------- */
-/* 0. ГЛОБАЛЬНОЕ ИСПРАВЛЕНИЕ: Box Sizing */
-/* ---------------------------------- */
-*,
-*::before,
-*::after {
-    box-sizing: border-box; /* Включение padding и border в общую ширину */
-}
-
-/* 1. Переменные CSS для легкой настройки */
-/* ---------------------------------- */
 :root {
-    --primary-color: #007bff; /* Синий/Голубой акцент */
-    --primary-hover: #0056b3;
-    --text-color: #f1f1f1;
-    --bg-dark: #12121e;
-    --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    --bg-card: rgba(255, 255, 255, 0.08); /* Основа для стекломорфизма */
-    --error-color: #ff4d4f;
+  --bg: #0b0d10;
+  --card: #141821;
+  --text: #e8eaf0;
+  --muted: #9aa1b2;
+  --accent: #7aa2ff;
+  --border: rgba(255, 255, 255, 0.06);
 }
 
-/* ---------------------------------- */
-/* 2. Общие стили и Стили доступности */
-/* ---------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg-gradient);
-    color: var(--text-color);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    line-height: 1.6;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(1200px 600px at 50% -200px, #1a1f2e, var(--bg));
+  color: var(--text);
+  min-height: 100vh;
 }
 
-/* 🔊 Класс для визуального скрытия элементов, но сохранения их для скринридеров (доступность) */
-.visually-hidden {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
+/* HERO */
+.hero {
+  padding: 80px 20px 60px;
+  text-align: center;
 }
 
-.auth-wrapper {
-    width: 90%;
-    max-width: 400px;
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
 }
 
-/* ---------------------------------- */
-/* 3. Стиль Карточки (Контейнера) */
-/* ---------------------------------- */
+.hero p {
+  font-size: 18px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.accent {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* GRID */
+.grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+/* CARD */
 .card {
-    background: var(--bg-card);
-    border-radius: 20px;
-    /* 🛠️ ИСПРАВЛЕНО: Уменьшен горизонтальный padding с 40px до 25px. */
-    padding: 40px 25px;
-    /* Стиль Стекломорфизма */
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    transition: transform 0.3s ease;
+  background: linear-gradient(180deg, #161b26, var(--card));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
-.card-title {
-    font-weight: 600;
-    margin-bottom: 30px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
-.card-title .fas {
-    margin-right: 10px;
-    font-size: 1.2em;
-    color: var(--primary-color);
+.card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+  flex-grow: 1;
 }
 
-/* ---------------------------------- */
-/* 4. Поля ввода с иконками */
-/* ---------------------------------- */
-.input-field {
-    position: relative;
-    margin-bottom: 25px;
-    width: 100%; /* Занимает всю доступную ширину внутри (400px - 50px) */
+/* TAGS */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 20px;
 }
 
-.input-field .icon {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 18px;
-    transition: 0.3s;
+.tag {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(122, 162, 255, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(122, 162, 255, 0.25);
 }
 
-.input-field input {
-    width: 100%; /* 100% теперь включает padding и border */
-    padding: 12px 12px 12px 45px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(0, 0, 0, 0.2);
-    color: var(--text-color);
-    outline: none;
-    transition: 0.3s ease;
-    font-size: 16px;
+/* BUTTON */
+.card a {
+  text-decoration: none;
+  text-align: center;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #0b0d10;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
 }
 
-.input-field input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
-    background: rgba(0, 0, 0, 0.4);
+.card a:hover {
+  opacity: 0.85;
 }
 
-.input-field input:focus + .icon {
-    color: var(--primary-color);
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
 }
 
-/* ---------------------------------- */
-/* 5. Кнопка и все остальные стили остаются без изменений */
-/* ---------------------------------- */
-.submit-button {
-    width: 100%;
-    padding: 14px;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 17px;
-    transition: background-color 0.3s, transform 0.1s, opacity 0.3s;
-    margin-top: 20px;
-    letter-spacing: 0.5px;
-}
-
-.submit-button:hover:not(:disabled) {
-    background-color: var(--primary-hover);
-}
-
-.submit-button:active:not(:disabled) {
-    transform: scale(0.98);
-}
-
-.submit-button:disabled {
-    background-color: #6c757d; /* Серый цвет для отключенной кнопки */
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-/* ---------------------------------- */
-/* 6. Дополнительные элементы */
-/* ---------------------------------- */
-.error-text {
-    color: var(--error-color);
-    margin: 15px 0 0;
-    font-size: 0.95em;
-    min-height: 20px; /* Чтобы контейнер не "прыгал" */
-    text-align: left; /* Лучше для ошибок */
-}
-
-.meta-links {
-    margin-top: 25px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9em;
-}
-
-.link {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.link:hover {
-    color: white;
-    text-decoration: underline;
-}
-
-/* ---------------------------------- */
-/* Стили для страницы Anime.html */
-/* ---------------------------------- */
-.anime-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    padding: 30px;
-    text-align: center;
-}
-
-.anime-gif-container {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 3px solid var(--primary-color);
-}
-
-.anime-gif {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.logout-button {
-    margin-top: 15px;
-    background-color: #dc3545; /* Красный для выхода */
-}
-.logout-button:hover:not(:disabled) {
-    background-color: #c82333;
+footer a {
+  color: var(--accent);
+  text-decoration: none;
 }

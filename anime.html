@@ -1,44 +1,30 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Секретная Аниме | Проект X</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>makurea</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at center, #1a1f2e, #0b0d10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7aa2ff;
+      font-family: Inter, sans-serif;
+      font-size: 32px;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+  </style>
 </head>
 <body>
-    <script>
-        // Проверка аутентификации
-        if (localStorage.getItem("isLoggedIn") !== "true") {
-            window.location.href = "index.html";
-        }
-    </script>
-
-    <main class="auth-wrapper anime-wrapper">
-        <div class="card">
-            <h1 class="card-title">
-                <i class="fas fa-heart"></i> Твой Секретный Аниме-Пост
-            </h1>
-
-            <div class="anime-gif-container">
-                <img src="https://img1.picmix.com/output/stamp/normal/9/6/5/5/2195569_53748.gif" alt="Секретная Аниме Гифка" class="anime-gif">
-            </div>
-
-            <button id="logoutButton" class="submit-button logout-button">
-                <i class="fas fa-sign-out-alt"></i> Выйти
-            </button>
-        </div>
-    </main>
-
-    <script>
-        // Логика выхода
-        const logoutButton = document.getElementById("logoutButton");
-        logoutButton.addEventListener('click', () => {
-            localStorage.removeItem("isLoggedIn");
-            window.location.href = "index.html";
-        });
-    </script>
+  makurea
 </body>
 </html>
