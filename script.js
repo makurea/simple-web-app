@@ -1,5 +1,11 @@
 const extensions = [
     {
+      name: "Quick Char Count",
+     description: "Instant character and word counter for selected text, inputs and textareas.",
+      tags: ["Text", "Counter", "Productivity"],
+      url: "https://chromewebstore.google.com/detail/quick-char-count/ipaeobflhaoglhkjcffmpgbknkeenbme"
+    },
+    {
       name: "CipherBloom",
       description: "Secure text transformation and encoding toolkit with elegant UI.",
       tags: ["Security", "Text", "Utility"],
