@@ -22,10 +22,16 @@ pipeline {
 
                     withCredentials([string(credentialsId: env.GITHUB_CREDENTIAL_ID, variable: 'TOKEN')]) {
 
-                        bat 'git config user.email "jenkins-ci@makurea.com"'
-                        bat 'git config user.name "Jenkins CI Makurea"'
-                        bat "git commit --allow-empty -m \"Jenkins Pages Deploy - Build #${env.BUILD_NUMBER}\""
-                        bat "git push https://${TOKEN}@github.com/makurea/simple-web-app.git HEAD:${env.TARGET_BRANCH}"
+                        // Используем один bat-блок с set TOKEN, чтобы корректно подставлялся Secret Text
+                        bat """
+                        set TOKEN=%TOKEN%
+                        git config user.email "jenkins-ci@makurea.com"
+                        git config user.name "Jenkins CI Makurea"
+                        git add .
+                        git commit --allow-empty -m "Jenkins Pages Deploy - Build #${env.BUILD_NUMBER}" || echo No changes to commit
+                        git remote set-url origin https://%TOKEN%@github.com/makurea/simple-web-app.git
+                        git push origin HEAD:%TARGET_BRANCH%
+                        """
                     }
                 }
             }
