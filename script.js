@@ -40,6 +40,12 @@ const extensions = [
     description: "Professional page performance monitor. Automatically tracks load metrics (TTFB, FCP, LCP, etc.) and visualizes them with a clean developer-friendly UI.",
     tags: ["Performance", "DevTools", "Monitoring"],
     url: "https://chromewebstore.google.com/detail/pagepulse/pmmmejkjnfknhajieinjlhegpkephbdn"
+  },
+  {
+    name: "TestDataGen",
+    description: "Flexible test data generator for developers. Quickly create mock datasets for apps, APIs and databases.",
+    tags: ["Developer", "Testing", "Data"],
+    url: "https://chromewebstore.google.com/detail/testdatagen/emlkmgjnlbnlnednbncijghkidjcdfko"
   }
 ];
 
