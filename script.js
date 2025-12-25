@@ -47,6 +47,7 @@ const extensions = [
     tags: ["Developer", "Testing", "Data"],
     url: "https://chromewebstore.google.com/detail/testdatagen/emlkmgjnlbnlnednbncijghkidjcdfko"
   }
+  // new tab
 ];
 
   const container = document.getElementById("extensions");
