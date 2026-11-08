@@ -46,25 +46,30 @@ const extensions = [
     description: "Flexible test data generator for developers. Quickly create mock datasets for apps, APIs and databases.",
     tags: ["Developer", "Testing", "Data"],
     url: "https://chromewebstore.google.com/detail/testdatagen/emlkmgjnlbnlnednbncijghkidjcdfko"
+  },
+  {
+    name: "Locator Hunter",
+    description: "Beautiful locator inspector for QA engineers: generates reliable CSS, XPath, Playwright and Selenium locators with reliability scores.",
+    tags: ["DevTools", "Testing", "QA"],
+    url: "https://chromewebstore.google.com/detail/locator-hunter/lccfflihfkbopikhnhblkchlljgoadpe"
   }
   // new tab
 ];
 
-  const container = document.getElementById("extensions");
+const container = document.getElementById("extensions");
 
-  extensions.forEach(ext => {
-    const card = document.createElement("div");
-    card.className = "card";
+extensions.forEach(ext => {
+  const card = document.createElement("div");
+  card.className = "card";
 
-    card.innerHTML = `
-      <h2>${ext.name}</h2>
-      <p>${ext.description}</p>
-      <div class="tags">
-        ${ext.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
-      </div>
-      <a href="${ext.url}" target="_blank">View in Chrome Store</a>
-    `;
+  card.innerHTML = `
+    <h2>${ext.name}</h2>
+    <p>${ext.description}</p>
+    <div class="tags">
+      ${ext.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
+    </div>
+    <a href="${ext.url}" target="_blank">View in Chrome Store</a>
+  `;
 
-    container.appendChild(card);
-  });
-  
+  container.appendChild(card);
+});
